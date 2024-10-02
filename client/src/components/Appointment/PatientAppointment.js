@@ -371,6 +371,43 @@ function PatientAppointment() {
                         {/* </div> */}
                        <div className={styles.availableSlotsHeader}> <h4 className="mt-5">Available Slots</h4> <p>Click a slot to book appointments</p></div>
 
+                       <div className='my-4 row'>
+    <label for="appTime" className="col-sm-3 col-form-label ">Time slots: </label>
+    <span className='col-sm-9'>
+        {[
+            "7:00 AM", "8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", 
+            "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM"
+        ].map((slot) => {
+            // Check if the slot is already booked or available
+            const isBooked = bookedSlots.includes(slot);
+            const isAvailable = availableSlots.includes(slot);
+
+            return (
+                <button 
+                    key={slot}
+                    className={`btn btn-sm m-2 ${clickedTimeSlot === slot ? 'btn-primary' : 'btn-outline-secondary'}`}
+                    onClick={() => !isBooked && setClickedTimeSlot(slot)}  // Set clicked slot and prevent booking booked slots
+                    disabled={isBooked}  // Disable button if the slot is booked
+                >
+                    {slot}
+                </button>
+            )
+        })}
+    </span>
+</div>
+
+{/* Large Book Appointment Button */}
+<div className='d-flex justify-content-center mt-4'>
+    <button 
+        className="btn btn-lg btn-success"
+        onClick={handleClickOpen}  // Open the booking form modal
+        disabled={!clickedTimeSlot}  // Disable button if no slot is selected
+    >
+        Book Appointment
+    </button>
+</div>
+
+                                
                         <div className='d-flex flex-wrap'>
                             {
                                 availableSlots.map(slot => {
