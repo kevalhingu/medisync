@@ -369,7 +369,7 @@ function PatientAppointment() {
                         {/* <div className="col-12"> */}
 
                         {/* </div> */}
-                        {availableSlots.length > 0 ? <div className={styles.availableSlotsHeader}> <h4 className="mt-5">Available Slots</h4> <p>Click a slot to book appointments</p></div> : <div></div>}
+                       <div className={styles.availableSlotsHeader}> <h4 className="mt-5">Available Slots</h4> <p>Click a slot to book appointments</p></div>
 
                         <div className='d-flex flex-wrap'>
                             {
